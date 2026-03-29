@@ -15,6 +15,7 @@ export default function LandscapePage() {
   const [landscape, setLandscape] = useState<LandscapeDTO | null>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'map' | 'summary' | 'whitespace'>('map')
+  const [checkingOut, setCheckingOut] = useState(false)
 
   useEffect(() => {
     async function load() {
@@ -23,6 +24,12 @@ export default function LandscapePage() {
         if (res.ok) {
           const data = await res.json()
           setLandscape(data)
+          // Persist to sessionStorage so the success page can trigger downloads
+          try {
+            sessionStorage.setItem(`landscapebrief_report_${id}`, JSON.stringify(data))
+          } catch {
+            // sessionStorage may be full — ignore
+          }
         }
       } catch {
         // ignore
@@ -32,6 +39,28 @@ export default function LandscapePage() {
     }
     load()
   }, [id])
+
+  async function handlePurchase() {
+    if (!landscape) return
+    setCheckingOut(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId: id }),
+      })
+      if (res.ok) {
+        const { url } = await res.json()
+        if (url) window.location.href = url
+      } else {
+        alert('Could not start checkout — please try again.')
+      }
+    } catch {
+      alert('Could not start checkout — please try again.')
+    } finally {
+      setCheckingOut(false)
+    }
+  }
 
   if (loading) {
     return (
@@ -61,7 +90,7 @@ export default function LandscapePage() {
   return (
     <div className="max-w-[1100px] mx-auto">
       {/* Header */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex items-start justify-between gap-4">
         <div>
           <h1 className="font-[family-name:var(--font-heading)] text-3xl font-semibold text-[#1B2A4A] mb-2">
             {landscape.title}
@@ -72,9 +101,33 @@ export default function LandscapePage() {
             <Badge variant="default">{landscape.whitespaceOpportunities.length} whitespace gaps</Badge>
           </div>
         </div>
-        <Button onClick={() => router.push('/app/upload')}>
-          New landscape
-        </Button>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <Button variant="secondary" size="sm" onClick={() => router.push('/app/upload')}>
+            New landscape
+          </Button>
+          <button
+            onClick={handlePurchase}
+            disabled={checkingOut}
+            className="inline-flex items-center gap-2 bg-[#C1440E] text-white text-sm font-medium px-4 py-2 rounded hover:bg-[#A33A0C] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {checkingOut ? (
+              <>
+                <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Redirecting&hellip;
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download Full Report (PDF + PPTX) &mdash; &pound;19
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Tabs */}
