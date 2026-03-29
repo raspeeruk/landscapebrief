@@ -1,245 +1,327 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Competitor Research: The Complete Playbook for 2026 | LandscapeBrief',
-  description: 'How to research competitors in 2026: primary research methods (customer interviews, win/loss), secondary sources (G2, LinkedIn jobs, changelogs), tools, and how to organise findings for stakeholders.',
-  openGraph: {
-    title: 'Competitor Research: The Complete Playbook for 2026',
-    description: 'Primary and secondary competitor research methods, the best tools for each source, and how to turn raw findings into stakeholder-ready output.',
-    type: 'article',
-  },
+  title: 'Competitor Research: How to Build Competitive Intelligence Without a Budget',
+  description: 'You don\'t need a $50K competitive intelligence firm. The best competitor data is publicly available. Here are 10 free sources and how to extract intelligence from each.',
 }
 
-export default function CompetitorResearchPage() {
+function NavBar() {
+  return (
+    <nav className="max-w-[1200px] mx-auto px-6 py-6 flex items-center justify-between border-b border-[#E2E1DE]">
+      <Link href="/" className="flex items-center gap-2">
+        <svg className="w-5 h-5 text-[#C1440E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v18H3V3zm9 0v18M3 12h18" />
+        </svg>
+        <span className="font-[family-name:var(--font-heading)] text-xl font-semibold text-[#1B2A4A]">CompBrief</span>
+      </Link>
+      <Link href="/auth/signup" className="text-sm font-medium bg-[#1B2A4A] text-white px-5 py-2 rounded hover:bg-[#0F1A2E] transition-colors">
+        Start free
+      </Link>
+    </nav>
+  )
+}
+
+function CtaBox() {
+  return (
+    <div className="my-12 border-l-4 border-[#C1440E] bg-[#FDF8F6] p-7 rounded-r-lg">
+      <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-widest text-[#C1440E] mb-2">LandscapeBrief</p>
+      <p className="font-[family-name:var(--font-heading)] text-xl font-semibold text-[#1B2A4A] mb-3">
+        LandscapeBrief organizes your competitor research into a quadrant map and professional PDF report
+      </p>
+      <p className="text-sm text-[#6B7280] leading-relaxed mb-5">
+        Once you have your competitor data, upload it as a CSV. LandscapeBrief positions each competitor on a 2×2 quadrant, identifies the whitespace, and generates the executive brief.
+      </p>
+      <Link href="/auth/signup" className="inline-flex items-center gap-2 bg-[#C1440E] text-white px-6 py-3 rounded text-sm font-medium hover:bg-[#A33A0C] transition-colors">
+        Map Your Competitive Landscape Free →
+      </Link>
+    </div>
+  )
+}
+
+function FinalCta() {
+  return (
+    <div className="my-14 bg-[#1B2A4A] rounded-lg p-12 text-center">
+      <p className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] uppercase tracking-widest mb-4">Ready?</p>
+      <h2 className="font-[family-name:var(--font-heading)] text-3xl font-semibold text-white mb-3">
+        You have the research. Now build the map.
+      </h2>
+      <p className="text-white/50 text-sm mb-8 max-w-[400px] mx-auto">
+        Turn your competitor spreadsheet into a board-ready quadrant map in under 3 minutes.
+      </p>
+      <Link href="/auth/signup" className="inline-flex items-center gap-2 bg-[#C1440E] text-white px-7 py-3.5 rounded font-medium hover:bg-[#A33A0C] transition-colors">
+        Map Your Competitive Landscape Free →
+      </Link>
+    </div>
+  )
+}
+
+export default function CompetitorResearch() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
-      {/* Nav */}
-      <nav className="max-w-[1200px] mx-auto px-6 py-6 flex items-center justify-between border-b border-[#E2E1DE]">
-        <Link href="/" className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-[#C1440E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v18H3V3zm9 0v18M3 12h18" />
-          </svg>
-          <span className="font-[family-name:var(--font-heading)] text-xl font-semibold text-[#1B2A4A]">
-            CompBrief
-          </span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/auth/login" className="text-sm font-medium text-[#9BA8B4] hover:text-[#1B2A4A] transition-colors">
-            Login
-          </Link>
-          <Link
-            href="/auth/signup"
-            className="text-sm font-medium bg-[#1B2A4A] text-white px-5 py-2 rounded hover:bg-[#0F1A2E] transition-colors"
-          >
-            Start free
-          </Link>
-        </div>
-      </nav>
+      <NavBar />
 
-      {/* Breadcrumb */}
-      <div className="max-w-[800px] mx-auto px-6 pt-8">
-        <p className="font-[family-name:var(--font-mono)] text-xs text-[#9BA8B4] tracking-wider uppercase">
-          <Link href="/" className="hover:text-[#1B2A4A] transition-colors">CompBrief</Link>
-          <span className="mx-2">/</span>
-          Guides
-          <span className="mx-2">/</span>
-          Competitor Research
-        </p>
-      </div>
-
-      {/* Article */}
-      <article className="max-w-[800px] mx-auto px-6 pt-10 pb-24">
-        <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] uppercase text-[#C1440E] mb-4">
-          Research playbook
-        </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-6" style={{ fontSize: '48px', lineHeight: 1.1, fontWeight: 600, letterSpacing: '-0.02em' }}>
-          Competitor Research: The Complete Playbook for 2026
-        </h1>
-        <p className="text-lg text-[#6B7280] leading-relaxed mb-10 max-w-[640px]">
-          Good competitor research is not a one-day desk exercise. It is an ongoing intelligence function that combines primary research (talking to real people) with secondary research (mining public data sources). This playbook covers both — and how to turn raw findings into something your team can act on.
-        </p>
-
-        <div className="h-px bg-[#E2E1DE] mb-10" />
-
-        {/* Primary research */}
-        <h2 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-4" style={{ fontSize: '30px', fontWeight: 600 }}>
-          Primary research: insights you can only get by talking to people
-        </h2>
-        <p className="text-[#6B7280] leading-relaxed mb-6">
-          Secondary sources tell you what is public. Primary research tells you what is true. The gap between those two things is where your strategic advantage lives.
-        </p>
-
-        <h3 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-3" style={{ fontSize: '22px', fontWeight: 600 }}>
-          Customer interviews
-        </h3>
-        <p className="text-[#6B7280] leading-relaxed mb-4">
-          The single best source of competitive intelligence is your own customers — specifically, customers who evaluated two or more options before choosing you. Ask them: what alternatives did you consider? What made you lean toward each? What nearly made you choose a competitor? What would push you to switch?
-        </p>
-        <p className="text-[#6B7280] leading-relaxed mb-6">
-          Do not ask customers to rank competitors directly — they will not give you honest answers in a formal setting. Instead, listen for the competitors they mention unprompted and the features or outcomes they describe. That unprompted data is more reliable than any direct question.
-        </p>
-
-        <h3 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-3" style={{ fontSize: '22px', fontWeight: 600 }}>
-          Win/loss analysis
-        </h3>
-        <p className="text-[#6B7280] leading-relaxed mb-4">
-          Review your CRM for every deal that closed in the last 90 days. For wins: which competitor did you displace or beat? For losses: which competitor won and why? This data already exists in your organisation — most companies do not mine it systematically.
-        </p>
-        <p className="text-[#6B7280] leading-relaxed mb-6">
-          Build a simple Notion or Airtable tracker with: deal size, ICP segment, competitor faced, outcome, and the one-sentence reason. After 30 entries, patterns emerge fast. You will see which competitors you consistently lose to in certain segments — that tells you exactly where to focus defensive product investment.
-        </p>
-
-        <div className="h-px bg-[#E2E1DE] my-10" />
-
-        {/* Secondary research */}
-        <h2 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-4" style={{ fontSize: '30px', fontWeight: 600 }}>
-          Secondary research: mining public data sources
-        </h2>
-        <p className="text-[#6B7280] leading-relaxed mb-6">
-          Most of what you need to know about a competitor is publicly available. The skill is knowing where to look and how to interpret what you find.
-        </p>
-
-        <div className="space-y-6 mb-8">
-          <div className="bg-white border border-[#E2E1DE] rounded-lg p-5">
-            <div className="flex items-start justify-between mb-2">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold">G2 and Capterra reviews</p>
-              <span className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] uppercase tracking-wider">High value</span>
-            </div>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              The most underused research source. Sort by recent reviews and read the one-star and two-star entries — these reveal structural weaknesses that do not appear in marketing copy. Look for patterns across multiple reviewers. A single complaint is noise; three or more is signal. Also check the &quot;pros and cons&quot; format used by most platforms — it gives you structured data even from qualitative text.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#E2E1DE] rounded-lg p-5">
-            <div className="flex items-start justify-between mb-2">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold">LinkedIn job postings = strategic direction</p>
-              <span className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] uppercase tracking-wider">High value</span>
-            </div>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              What a company hires for reveals what it is building next. A competitor hiring 8 enterprise account executives is moving upmarket. Three new ML engineer roles signals an AI investment. A series of EMEA sales hires means geographic expansion. Check competitor job boards quarterly — this is forward-looking intelligence that press releases never give you.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#E2E1DE] rounded-lg p-5">
-            <div className="flex items-start justify-between mb-2">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold">Pricing pages and changelogs</p>
-              <span className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] uppercase tracking-wider">Moderate value</span>
-            </div>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              Pricing pages tell you tier structure, what features are gated, and where the enterprise line is drawn. Monitor them with Visualping or a similar tool — pricing changes are strategic signals. Changelogs tell you what the product team is actually shipping versus what the roadmap deck promised. High-velocity changelogs in a specific area indicate investment concentration.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#E2E1DE] rounded-lg p-5">
-            <div className="flex items-start justify-between mb-2">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold">Funding and press announcements</p>
-              <span className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] uppercase tracking-wider">Moderate value</span>
-            </div>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              Set Google Alerts for each competitor. Funding rounds, acquisitions, and key leadership hires often appear in press before any product change is visible. A Series B raise signals 12-18 months of accelerated hiring and feature investment — plan your defensive positioning now, not when the features ship.
-            </p>
-          </div>
-        </div>
-
-        <div className="h-px bg-[#E2E1DE] my-10" />
-
-        {/* Tools */}
-        <h2 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-4" style={{ fontSize: '30px', fontWeight: 600 }}>
-          Tools for competitor research
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          {[
-            { tool: 'SimilarWeb', use: 'Traffic volume, channel breakdown, top referring sites, geographic distribution. Free tier covers basic metrics.' },
-            { tool: 'Ahrefs / Semrush', use: 'SEO traffic, keyword rankings, backlink profile. Shows which content is driving organic growth and which terms they are targeting.' },
-            { tool: 'BuiltWith', use: 'Technology stack — know what infrastructure a competitor runs on. Useful for identifying technical debt or modern stack advantages.' },
-            { tool: 'Visualping', use: 'Monitor competitor websites for changes — pricing, messaging, feature announcements. Set weekly checks on key pages.' },
-            { tool: 'LinkedIn Sales Nav', use: 'Headcount by function, hiring velocity, org structure. Worth the subscription for any serious competitive program.' },
-            { tool: 'Wayback Machine', use: 'Historical versions of competitor websites. See how their messaging has evolved — pivots reveal what stopped working.' },
-          ].map(item => (
-            <div key={item.tool} className="bg-white border border-[#E2E1DE] rounded-lg p-4">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold mb-2">{item.tool}</p>
-              <p className="text-xs text-[#6B7280] leading-relaxed">{item.use}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="h-px bg-[#E2E1DE] my-10" />
-
-        {/* Organising and sharing */}
-        <h2 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-4" style={{ fontSize: '30px', fontWeight: 600 }}>
-          Organising findings and sharing with stakeholders
-        </h2>
-        <p className="text-[#6B7280] leading-relaxed mb-4">
-          Raw research is not useful. The job of the analyst or PM doing this work is to synthesise it into something stakeholders can act on. Three formats work:
-        </p>
-        <div className="space-y-4 mb-8">
-          {[
-            { format: 'Competitive one-pager per competitor', audience: 'Sales and customer success', content: 'One page: their positioning, key strengths, key weaknesses, how to win against them, what to watch for.' },
-            { format: 'Strategic landscape document', audience: 'Leadership and board', content: 'Full competitive map, white space analysis, threats and opportunities. Updated quarterly. Use a positioning map as the centrepiece.' },
-            { format: 'Battlecards', audience: 'Sales team', content: 'Objection handling, feature comparisons, and win themes. One card per major competitor, kept in CRM or sales enablement tool.' },
-          ].map(item => (
-            <div key={item.format} className="bg-white border border-[#E2E1DE] rounded-lg p-5">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold mb-1">{item.format}</p>
-              <p className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] mb-2 uppercase tracking-wider">For: {item.audience}</p>
-              <p className="text-sm text-[#6B7280] leading-relaxed">{item.content}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-[#6B7280] leading-relaxed">
-          The strategic landscape document benefits most from a visual positioning map. See our guide on{' '}
-          <Link href="/guides/competitive-landscape-analysis" className="text-[#C1440E] hover:underline">
-            how to do a competitive landscape analysis
-          </Link>{' '}
-          for the step-by-step process, or the{' '}
-          <Link href="/guides/competitive-analysis-template" className="text-[#C1440E] hover:underline">
-            competitive analysis template
-          </Link>{' '}
-          for a ready-to-use framework.
-        </p>
-
-        <div className="h-px bg-[#E2E1DE] my-10" />
-
-        {/* Related */}
-        <h2 className="font-[family-name:var(--font-heading)] text-[#1B2A4A] mb-6" style={{ fontSize: '28px', fontWeight: 600 }}>
-          Related guides
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-          {[
-            { href: '/guides/competitive-analysis-template', label: 'Competitive Analysis Template', desc: 'Five-section framework with data sources' },
-            { href: '/guides/competitive-landscape-analysis', label: 'Competitive Landscape Analysis', desc: 'Step-by-step guide to mapping your market' },
-            { href: '/guides/market-positioning-map', label: 'Market Positioning Map', desc: 'Axis selection and quadrant interpretation' },
-          ].map(link => (
-            <Link key={link.href} href={link.href} className="bg-white border border-[#E2E1DE] rounded-lg p-4 hover:border-[#C1440E] transition-colors">
-              <p className="font-[family-name:var(--font-heading)] text-[#1B2A4A] font-semibold text-sm mb-1">{link.label}</p>
-              <p className="text-xs text-[#9BA8B4]">{link.desc}</p>
-            </Link>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="bg-[#1B2A4A] rounded-lg p-10 text-center">
-          <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] uppercase text-[#C1440E] mb-3">
-            Turn research into reports
+      <main className="max-w-[768px] mx-auto px-6 py-16">
+        <div className="mb-10">
+          <p className="font-[family-name:var(--font-mono)] text-xs tracking-[0.2em] uppercase text-[#C1440E] mb-4">
+            Guide · Competitive Intelligence
           </p>
-          <h2 className="font-[family-name:var(--font-heading)] text-white mb-4" style={{ fontSize: '34px', fontWeight: 600, lineHeight: 1.2 }}>
-            Professional competitive reports in under 3 minutes
+          <h1 className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl font-semibold text-[#1B2A4A] leading-tight mb-6">
+            Competitor Research: How to Build Competitive Intelligence Without a Budget
+          </h1>
+          <p className="text-lg text-[#6B7280] leading-relaxed">
+            You don't need a $50K competitive intelligence firm. The best competitor data is publicly available — in job postings, product reviews, pricing pages, and Google Ads. The companies that win at competitor research don't spend more money; they look in better places and know what signals to track.
+          </p>
+        </div>
+
+        <div className="h-px bg-[#E2E1DE] mb-12" />
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-6">
+            10 places to find competitor data (and what to extract from each)
           </h2>
-          <p className="text-[#9BA8B4] mb-8 max-w-[480px] mx-auto leading-relaxed">
-            Once you have your competitor data, LandscapeBrief does the heavy lifting: AI-generated quadrant, cluster analysis, white space identification, and a strategy brief — exported as a PDF ready for stakeholders.
+          <p className="text-[#6B7280] leading-relaxed mb-8">
+            Each source below gives you a different type of intelligence. Used together, they build a surprisingly complete picture of how a competitor operates, where they are investing, and where they are weak.
           </p>
-          <a
-            href="https://landscapebrief.com"
-            className="inline-flex items-center gap-2 bg-[#C1440E] text-white px-8 py-3.5 rounded font-medium hover:bg-[#A33A0C] transition-colors"
-          >
-            Generate your competitive report
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-          <p className="text-[#9BA8B4] text-sm mt-4">Free up to 10 competitors. No credit card required.</p>
+          <div className="space-y-6">
+            {[
+              {
+                n: '01',
+                source: 'LinkedIn',
+                extract: 'Headcount, team structure, hiring velocity, executive backgrounds',
+                how: 'Check the "People" tab for size and growth rate. Look at how they describe themselves in their company description — the language they use publicly is the positioning they\'re committed to.',
+              },
+              {
+                n: '02',
+                source: 'Job postings',
+                extract: 'Strategic priorities, technology stack, target customers, growth areas',
+                how: 'A company building AI features will post for ML engineers before anyone outside hears about it. A company entering enterprise will post for enterprise account executives 6–12 months before the product is ready. Read job postings as strategy signals.',
+              },
+              {
+                n: '03',
+                source: 'Product Hunt',
+                extract: 'Original positioning, early community feedback, feature history',
+                how: 'Search for their product launch page. Read the first 50 comments — this is unfiltered early customer reaction. Also note the tagline they launched with vs. how they describe themselves now. The drift reveals a pivot.',
+              },
+              {
+                n: '04',
+                source: 'Glassdoor',
+                extract: 'Internal culture, execution problems, leadership quality, burn rate signals',
+                how: 'Read the negative reviews for patterns. Recurring complaints about "sales promises features that don\'t exist" or "constant pivots" are strategy intelligence. Also check CEO approval rating for leadership stability.',
+              },
+              {
+                n: '05',
+                source: 'App Store / Google Play reviews',
+                extract: 'Feature gaps, reliability issues, customer segment feedback',
+                how: 'Filter for 1-star and 2-star reviews only. Group the complaints by theme. These are your product differentiation opportunities — the things their customers hate that you can do better.',
+              },
+              {
+                n: '06',
+                source: 'SimilarWeb',
+                extract: 'Traffic volume, traffic sources, geographic reach, growth trajectory',
+                how: 'Free tier gives traffic estimates and top traffic sources. Compare traffic channels — a competitor heavily dependent on paid search is one algorithm change away from losing customers. A competitor with 70%+ organic is hard to displace quickly.',
+              },
+              {
+                n: '07',
+                source: 'Google Ads Transparency Center',
+                extract: 'Messaging, ICP (ideal customer profile), value proposition, budget signals',
+                how: 'Search ads.google.com/transparency for any competitor. See every active ad they\'re running. The ad copy tells you the positioning they\'re paying to defend — these are the claims they believe convert. The keywords they buy tell you the customer pain they\'re targeting.',
+              },
+              {
+                n: '08',
+                source: 'Customer reviews (G2, Capterra, Trustpilot)',
+                extract: 'Use cases, switching reasons, integration needs, ROI stories',
+                how: 'Sort by "most recent" not "most helpful." Read reviews that mention competitors — these contain the switching stories that reveal what drives customers out of an incumbent. The phrases customers use in reviews are the exact words that belong in your marketing.',
+              },
+              {
+                n: '09',
+                source: 'Pricing pages',
+                extract: 'Pricing model, tier structure, enterprise anchoring, feature bundling strategy',
+                how: 'Screenshot competitor pricing pages monthly. The structure changes slowly but deliberately — moving from per-seat to usage-based, adding an enterprise tier, changing what\'s in the free plan. Each change signals a strategic shift.',
+              },
+              {
+                n: '10',
+                source: 'Press releases and news coverage',
+                extract: 'Funding rounds, partnerships, acquisitions, executive changes',
+                how: 'Set up Google Alerts for each competitor\'s name. A funding round signals 18 months of aggressive growth ahead. An acquisition signals capability gaps they couldn\'t build. An executive departure often precedes a pivot.',
+              },
+            ].map(item => (
+              <div key={item.n} className="bg-white border border-[#E2E1DE] rounded-lg p-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <span className="font-[family-name:var(--font-mono)] text-xs text-[#C1440E] tracking-widest shrink-0 pt-0.5">{item.n}</span>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-[#1B2A4A]">{item.source}</h3>
+                    <p className="font-[family-name:var(--font-mono)] text-xs text-[#4A6FA5] mt-1 uppercase tracking-wider">{item.extract}</p>
+                  </div>
+                </div>
+                <p className="text-sm text-[#6B7280] leading-relaxed pl-8">{item.how}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-6">
+            What to track for each competitor
+          </h2>
+          <p className="text-[#6B7280] leading-relaxed mb-8">
+            Once you have the sources, you need a consistent data model. Track these five dimensions for each competitor in your spreadsheet:
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-[#1B2A4A]">
+                  <th className="text-left p-4 text-white font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider font-normal">Dimension</th>
+                  <th className="text-left p-4 text-white font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider font-normal">What to record</th>
+                  <th className="text-left p-4 text-white font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider font-normal">Update frequency</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { dim: 'Pricing', record: 'Starting price, pricing model, free tier, enterprise tier', freq: 'Monthly' },
+                  { dim: 'Features', record: 'Core capabilities, recent launches, roadmap signals from job posts', freq: 'Quarterly' },
+                  { dim: 'Target market', record: 'Stated ICP, actual customers from reviews, verticals served', freq: 'Quarterly' },
+                  { dim: 'Messaging', record: 'Primary headline, key claims, CTA language from ads and homepage', freq: 'Monthly' },
+                  { dim: 'Growth signals', record: 'Employee count, funding, new hires, partnership announcements', freq: 'Monthly' },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-[#F0EFF5]'}>
+                    <td className="p-4 text-[#1B2A4A] font-medium border-b border-[#E2E1DE]">{row.dim}</td>
+                    <td className="p-4 text-[#6B7280] border-b border-[#E2E1DE]">{row.record}</td>
+                    <td className="p-4 text-[#9BA8B4] font-[family-name:var(--font-mono)] text-xs border-b border-[#E2E1DE]">{row.freq}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-6">
+            How to track competitors over time
+          </h2>
+          <p className="text-[#6B7280] leading-relaxed mb-6">
+            The most valuable competitive intelligence isn't the current snapshot — it's the direction of travel. A lightweight monitoring system built in an afternoon will catch strategic shifts months before they become obvious.
+          </p>
+          <div className="space-y-4">
+            {[
+              { tool: 'Google Alerts', setup: 'Set one alert per competitor name. Deliver weekly digests, not real-time. Real-time creates noise.', cost: 'Free' },
+              { tool: 'LinkedIn company follow', setup: 'Follow each competitor. LinkedIn surfaces company updates, new hires, and job posts in your feed.', cost: 'Free' },
+              { tool: 'Web archive / screenshot tool', setup: 'Use archive.org to track homepage and pricing page changes quarterly. Wayback Machine stores snapshots automatically.', cost: 'Free' },
+              { tool: 'G2 or Capterra email alerts', setup: 'Both platforms can notify you when new reviews are posted for specific products. Set one per competitor.', cost: 'Free' },
+              { tool: 'Monthly 30-minute review', setup: 'Block 30 minutes at the end of each month. Review alerts, update your competitor spreadsheet, flag anything that changed your positioning thinking.', cost: '30 min/month' },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-5 bg-[#FAFAF8] border border-[#E2E1DE] rounded-lg p-5">
+                <div className="shrink-0 w-8 h-8 rounded bg-[#F0EFF5] flex items-center justify-center">
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#4A6FA5]">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-semibold text-[#1B2A4A] text-sm">{item.tool}</p>
+                    <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#9BA8B4] uppercase tracking-wider">{item.cost}</span>
+                  </div>
+                  <p className="text-sm text-[#6B7280] leading-relaxed">{item.setup}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <CtaBox />
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-6">
+            Analyzing competitor job postings for strategic intelligence
+          </h2>
+          <p className="text-[#6B7280] leading-relaxed mb-6">
+            Job postings are the most underused source in competitor research. Companies disclose their strategy in job descriptions months before they announce it publicly. Here's what to look for:
+          </p>
+          <div className="space-y-5">
+            {[
+              { signal: 'Enterprise Account Executive roles', meaning: 'Moving upmarket into enterprise — expect longer sales cycles, new features for compliance/security, and a pricing tier increase in 6–12 months.' },
+              { signal: 'Machine learning / AI engineer roles', meaning: 'Building AI into the product. Watch for AI-native feature announcements in the next product cycle.' },
+              { signal: 'Vertical-specific roles (e.g., "Healthcare Sales")', meaning: 'Entering a specific vertical. If that vertical is one you were planning to target, they now have a head start.' },
+              { signal: 'Large batch of engineering hires', meaning: 'Significant platform investment — a major rewrite, new architecture, or new product line. Often precedes a rebrand or pricing overhaul.' },
+              { signal: 'Customer Success / Onboarding hires', meaning: 'Either rapid growth (good for the category) or high churn that requires more hand-holding (exploitable weakness).' },
+            ].map((item, i) => (
+              <div key={i} className="border-l-4 border-[#4A6FA5] pl-6 py-2">
+                <p className="font-[family-name:var(--font-heading)] text-base font-semibold text-[#1B2A4A] mb-1">Signal: {item.signal}</p>
+                <p className="text-sm text-[#6B7280] leading-relaxed">{item.meaning}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-6">
+            Customer review mining — what you can learn from 1-star reviews
+          </h2>
+          <p className="text-[#6B7280] leading-relaxed mb-6">
+            The most honest competitive intelligence your competitors generate is written by their unhappy customers in 1-star reviews. This is information they cannot suppress, and they don't get to spin it.
+          </p>
+          <div className="space-y-5">
+            {[
+              { theme: 'Pricing complaints', intel: 'Customers feel the product isn\'t worth what they pay. This is a direct signal that a lower-priced alternative with 80% of the features would take customers.' },
+              { theme: 'Customer support complaints', intel: 'A structural weakness — improving support requires hiring, which takes time. This gap is exploitable and persists.' },
+              { theme: '"Too complex" or "steep learning curve"', intel: 'The product has prioritised features over usability. A simpler product targeting the same use case has a clear entry point.' },
+              { theme: 'Missing specific features', intel: 'If 10+ reviews mention the same missing feature, that\'s a build target. If you ship it first, mention it in your comparison content.' },
+              { theme: '"Used to be good, but..."', intel: 'A product in decline — often after an acquisition or pricing change. Former fans are actively looking for alternatives. This is the best moment to reach them.' },
+            ].map((item, i) => (
+              <div key={i} className="bg-white border border-[#E2E1DE] rounded-lg p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-3.5 h-3.5 text-[#C1440E]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  <p className="font-[family-name:var(--font-mono)] text-xs text-[#9BA8B4] uppercase tracking-wider">Review theme: {item.theme}</p>
+                </div>
+                <p className="text-sm text-[#6B7280] leading-relaxed">{item.intel}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#1B2A4A] mb-8">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-8">
+            {[
+              {
+                q: 'Is competitor research ethical? What are the limits?',
+                a: 'Researching publicly available information — pricing pages, job postings, public reviews, press releases, advertising — is entirely standard practice and expected at every level of business. The line is accessing private information: hacking, impersonating, or deceiving competitors\' employees to extract information is off-limits and illegal in most jurisdictions.',
+              },
+              {
+                q: 'How long should competitor research take?',
+                a: 'An initial deep dive on 5–8 competitors should take 2–4 hours. Ongoing monitoring, once the system is set up, should take no more than 30 minutes per month per competitor. If it\'s taking longer, you\'re tracking too many attributes.',
+              },
+              {
+                q: 'Should you talk to competitors\' customers directly?',
+                a: 'Yes — and this is often the highest-signal research you can do. If you have a sales motion, ask every prospect why they looked at alternatives and what they liked and disliked. If you don\'t have inbound prospects yet, look for churned customers from competitors on LinkedIn and reach out directly.',
+              },
+              {
+                q: 'What do you do with competitor research once you have it?',
+                a: 'Synthesise it into a positioning map that shows where each competitor sits on two strategic axes. Then identify the whitespace — the quadrant or attribute combination no competitor owns — and build your positioning thesis around that gap. LandscapeBrief does this synthesis automatically from a CSV.',
+              },
+            ].map(faq => (
+              <div key={faq.q} className="border-l-2 border-[#E2E1DE] pl-6">
+                <h3 className="font-[family-name:var(--font-heading)] text-base font-semibold text-[#1B2A4A] mb-2">{faq.q}</h3>
+                <p className="text-sm text-[#6B7280] leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <FinalCta />
+      </main>
+
+      <footer className="max-w-[1200px] mx-auto px-6 py-10">
+        <div className="h-px bg-[#E2E1DE] mb-8" />
+        <div className="flex items-center justify-between">
+          <Link href="/" className="font-[family-name:var(--font-heading)] text-lg text-[#9BA8B4] hover:text-[#1B2A4A] transition-colors">CompBrief</Link>
+          <div className="flex items-center gap-6 text-sm text-[#9BA8B4]">
+            <Link href="/guides/competitive-analysis-template" className="hover:text-[#1B2A4A] transition-colors">Analysis Template</Link>
+            <Link href="/guides/competitive-landscape-analysis" className="hover:text-[#1B2A4A] transition-colors">Landscape Analysis</Link>
+            <Link href="/guides/market-positioning-map" className="hover:text-[#1B2A4A] transition-colors">Positioning Map</Link>
+          </div>
         </div>
-      </article>
+      </footer>
     </div>
   )
 }
