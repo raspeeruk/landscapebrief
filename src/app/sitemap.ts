@@ -15,5 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/guides/competitive-moat-analysis`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/guides/swot-analysis-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/guides/competitor-pricing-analysis`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/competitive-intelligence-tools`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/blue-ocean-strategy-canvas`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/value-chain-analysis`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/five-forces-analysis-template`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/market-map-template`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/competitor-swot-analysis`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/industry-landscape-report`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/guides/competitive-benchmarking-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 }
