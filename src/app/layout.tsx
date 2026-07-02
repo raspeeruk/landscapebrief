@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Newsreader, Atkinson_Hyperlegible, Azeret_Mono } from 'next/font/google'
 import './globals.css'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -53,6 +54,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)] antialiased">
         {children}
+        <NewsletterSignup />
       </body>
     </html>
   )
