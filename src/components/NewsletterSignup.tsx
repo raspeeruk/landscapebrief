@@ -2,6 +2,17 @@
 
 import { useState } from 'react'
 
+/** Attribution: current pathname plus utm_source/utm_medium/utm_campaign from the URL. */
+function currentAttribution() {
+  if (typeof window === 'undefined') return { page: '', source: '' }
+  const params = new URLSearchParams(window.location.search)
+  const utm = ['utm_source', 'utm_medium', 'utm_campaign']
+    .map(key => params.get(key)?.trim())
+    .filter(Boolean)
+    .join('/')
+  return { page: window.location.pathname, source: utm || 'footer' }
+}
+
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [website, setWebsite] = useState('')
@@ -17,7 +28,7 @@ export default function NewsletterSignup() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, website }),
+        body: JSON.stringify({ email, website, ...currentAttribution() }),
       })
       const data = await res.json().catch(() => ({}))
       if (res.ok && data.ok) {
