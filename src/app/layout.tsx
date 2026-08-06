@@ -1,3 +1,4 @@
+import ConsentScript from "next/script";
 import type { Metadata } from 'next'
 import { Newsreader, Atkinson_Hyperlegible, Azeret_Mono } from 'next/font/google'
 import './globals.css'
@@ -45,6 +46,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${newsreader.variable} ${atkinsonHyperlegible.variable} ${azeretMono.variable}`}>
       <head>
+        <ConsentScript
+          id="roger-group-consent"
+          src="https://rogerson-signups.netlify.app/consent-widget.js"
+          strategy="beforeInteractive"
+          data-brand="CompBrief"
+          data-domain="landscapebrief.com"
+          data-analytics="true"
+          data-marketing="false"
+        />
         {GA4_ID && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />
