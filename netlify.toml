@@ -5,5 +5,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
+[[redirects]]
+  from = "/api/checkout"
+  to = "/.netlify/functions/checkout"
+  status = 200
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"

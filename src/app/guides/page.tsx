@@ -193,7 +193,7 @@ export default function GuidesIndex() {
         <div className="flex items-center justify-between">
           <Link href="/" className="font-[family-name:var(--font-heading)] text-lg text-[#9BA8B4] hover:text-[#1B2A4A] transition-colors">CompBrief</Link>
           <div className="flex items-center gap-6 text-sm text-[#9BA8B4]">
-            <Link href="/pricing" className="hover:text-[#1B2A4A] transition-colors">Pricing</Link>
+            <Link href="/#pricing" className="hover:text-[#1B2A4A] transition-colors">Pricing</Link>
             <Link href="/app" className="hover:text-[#1B2A4A] transition-colors">App</Link>
           </div>
         </div>
